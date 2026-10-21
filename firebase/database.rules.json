@@ -1,0 +1,33 @@
+{
+  "rules": {
+    "usuarios": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        "caja": {
+          "estado": {
+            "bloqueada": { ".validate": "newData.isBoolean()" },
+            "modo": { ".validate": "newData.isString() && (newData.val() === 'NORMAL' || newData.val() === 'VACACIONES' || newData.val() === 'ALARMA')" },
+            "sensibilidad": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 100" },
+            "puertaAbierta": { ".validate": "newData.isBoolean()" },
+            "alarma": { ".validate": "newData.isBoolean()" },
+            "intentosFallidos": { ".validate": "newData.isNumber() && newData.val() >= 0" },
+            "actualizado": { ".validate": "newData.isNumber()" },
+            "ultimoUsuario": { ".validate": "newData.isString()" },
+            "$otro": { ".validate": false }
+          },
+          "config": {
+            "pinHash": { ".validate": "newData.isString() && newData.val().length === 64" },
+            "$otro": { ".validate": false }
+          },
+          "eventos": {
+            ".indexOn": ["fecha"],
+            "$evento": {
+              ".validate": "newData.hasChildren(['tipo', 'detalle', 'fecha'])"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pantalla MONITOREO (rúbrica 2.1.1.2): MUESTRA los datos recibidos del otro dispositivo
+    y ENVÍA el estado del sensor de puerta simulado (MaterialSwitch).
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Indicador de conexión 🟢 / 🔴 -->
+        <TextView
+            android:id="@+id/textConexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/desconectado"
+            android:textStyle="bold" />
+
+        <!-- Tarjeta principal: estado de la cerradura (cambia de color con el estado) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEstado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/verde_claro"
+            app:cardCornerRadius="20dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/textIconoEstado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔒"
+                    android:textSize="40sp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textEstadoCerradura"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cargando..."
+                        android:textAppearance="?attr/textAppearanceTitleLarge"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textActualizado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/texto_secundario" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Fila 1: Modo y Alarma -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/tarjeta"
+                app:cardCornerRadius="12dp"
+                app:strokeWidth="0dp">
+
+                <TextView
+                    android:id="@+id/textModo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="Modo\n—" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAlarma"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/tarjeta"
+                app:cardCornerRadius="12dp"
+                app:strokeWidth="0dp">
+
+                <TextView
+                    android:id="@+id/textAlarma"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="Alarma\n—" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Fila 2: Puerta y Sensibilidad -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/tarjeta"
+                app:cardCornerRadius="12dp"
+                app:strokeWidth="0dp">
+
+                <TextView
+                    android:id="@+id/textPuerta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="Puerta\n—" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/tarjeta"
+                app:cardCornerRadius="12dp"
+                app:strokeWidth="0dp">
+
+                <TextView
+                    android:id="@+id/textSensibilidad"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:text="Sensibilidad\n—" />
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- Sensor de puerta simulado: lo que se cambia aquí viaja al Activador -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            app:cardBackgroundColor="@color/tarjeta"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/simular_puerta"
+                    android:textAppearance="?attr/textAppearanceTitleSmall" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchPuerta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Historial: datos guardados y consultados desde Firebase -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/historial"
+            android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="12dp"
+            app:strokeColor="@color/morado_claro"
+            app:strokeWidth="1dp">
+
+            <TextView
+                android:id="@+id/textHistorial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="6dp"
+                android:padding="12dp"
+                android:text="Sin eventos todavía"
+                android:textSize="13sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

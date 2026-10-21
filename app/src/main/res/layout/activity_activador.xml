@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Pantalla ACTIVADOR (rúbrica 2.1.1.2): ENVÍA datos al otro dispositivo.
+    Elementos interactivos Material: MaterialSwitch, RadioGroup, Slider y TextInputLayout (PIN).
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Indicador de conexión 🟢 / 🔴 -->
+        <TextView
+            android:id="@+id/textConexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="@string/desconectado"
+            android:textStyle="bold" />
+
+        <!-- 1) Switch: bloquear / desbloquear -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:cardBackgroundColor="@color/tarjeta"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cerradura_bloqueada"
+                    android:textAppearance="?attr/textAppearanceTitleMedium" />
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/switchBloqueada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 2) RadioGroup: modo de la caja -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/modo_caja"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupModo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checkedButton="@+id/rbNormal">
+
+            <RadioButton
+                android:id="@+id/rbNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_normal" />
+
+            <RadioButton
+                android:id="@+id/rbVacaciones"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_vacaciones" />
+
+            <RadioButton
+                android:id="@+id/rbAlarma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modo_alarma" />
+        </RadioGroup>
+
+        <!-- 3) Slider: sensibilidad del sensor (0 a 100) -->
+        <TextView
+            android:id="@+id/textSensibilidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Sensibilidad del sensor: 50"
+            android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderSensibilidad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stepSize="1"
+            android:value="50"
+            android:valueFrom="0"
+            android:valueTo="100" />
+
+        <!-- 4) PIN: obligatorio para enviar cualquier comando -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutPin"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="@string/hint_pin"
+            app:counterEnabled="true"
+            app:counterMaxLength="6"
+            app:endIconMode="password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextPin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberPassword"
+                android:maxLength="6" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/textAyudaPin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/texto_secundario"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="@string/btn_enviar" />
+
+        <!-- Lo que RECIBE desde el otro dispositivo (sensor de puerta, alarma) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEstadoRemoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:cardBackgroundColor="@color/tarjeta"
+            app:cardCornerRadius="16dp"
+            app:strokeWidth="0dp">
+
+            <TextView
+                android:id="@+id/textEstadoRemoto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:padding="16dp"
+                android:text="Cargando estado..." />
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+</ScrollView>

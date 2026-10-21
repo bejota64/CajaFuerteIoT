@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema basado en Material Design 3 (Material Components). -->
+    <style name="Theme.CajaFuerteIoT" parent="Theme.Material3.Light">
+        <item name="colorPrimary">@color/morado</item>
+        <item name="colorOnPrimary">@color/blanco</item>
+        <item name="colorPrimaryContainer">@color/morado_claro</item>
+        <item name="android:colorBackground">@color/superficie</item>
+        <!-- Barra superior morada con texto blanco -->
+        <item name="actionBarStyle">@style/BarraSuperior</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.Material3.Dark.ActionBar</item>
+        <item name="android:statusBarColor">@color/morado</item>
+    </style>
+
+    <style name="BarraSuperior" parent="Widget.Material3.ActionBar.Solid">
+        <item name="background">@color/morado</item>
+        <item name="titleTextStyle">@style/TextoBarra</item>
+    </style>
+
+    <style name="TextoBarra" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/blanco</item>
+    </style>
+</resources>

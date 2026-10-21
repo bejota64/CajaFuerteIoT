@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Permisos NORMALES (Sesión 8): se conceden solo con declararlos, sin diálogo. -->
+    <!-- INTERNET: comunicarse con Firebase por Wi-Fi/datos. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- ACCESS_NETWORK_STATE: saber si hay red (indicador de conexión). -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!--
+        Seguridad:
+        - allowBackup="false": los datos de la app no se copian en respaldos del sistema.
+        - usesCleartextTraffic="false": prohíbe conexiones sin cifrar (solo HTTPS/TLS).
+    -->
+    <application
+        android:name=".CajaApp"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_caja"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_caja"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CajaFuerteIoT"
+        android:usesCleartextTraffic="false">
+
+        <!-- Pantalla inicial: Login -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ActivadorActivity"
+            android:exported="false"
+            android:parentActivityName=".MenuActivity" />
+
+        <activity
+            android:name=".MonitoreoActivity"
+            android:exported="false"
+            android:parentActivityName=".MenuActivity" />
+
+    </application>
+
+</manifest>

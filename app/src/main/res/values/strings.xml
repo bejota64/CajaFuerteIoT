@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Caja Fuerte IoT</string>
+
+    <!-- Login -->
+    <string name="hint_correo">Correo</string>
+    <string name="hint_password">Contraseña (mínimo 6 caracteres)</string>
+    <string name="btn_iniciar_sesion">Iniciar sesión</string>
+    <string name="btn_registrar">Registrarse</string>
+
+    <!-- Menú -->
+    <string name="titulo_menu">Menú</string>
+    <string name="menu_activador">🎛️ Activador</string>
+    <string name="menu_activador_desc">Controla tu caja a distancia: bloquear, modo y sensibilidad.</string>
+    <string name="menu_monitoreo">📊 Monitoreo</string>
+    <string name="menu_monitoreo_desc">Ve el estado en tiempo real, el sensor de puerta y el historial.</string>
+    <string name="btn_cerrar_sesion">Cerrar sesión</string>
+
+    <!-- Activador -->
+    <string name="titulo_activador">Activador</string>
+    <string name="cerradura_bloqueada">Cerradura bloqueada</string>
+    <string name="modo_caja">Modo de la caja</string>
+    <string name="modo_normal">Normal</string>
+    <string name="modo_vacaciones">Vacaciones</string>
+    <string name="modo_alarma">Alarma armada</string>
+    <string name="hint_pin">PIN (4 a 6 dígitos)</string>
+    <string name="btn_enviar">Enviar comando</string>
+
+    <!-- Monitoreo -->
+    <string name="titulo_monitoreo">Monitoreo</string>
+    <string name="simular_puerta">Simular sensor de puerta (abierta)</string>
+    <string name="historial">Historial de eventos</string>
+
+    <!-- Conexión -->
+    <string name="conectado">🟢 Conectado</string>
+    <string name="desconectado">🔴 Sin conexión</string>
+</resources>
