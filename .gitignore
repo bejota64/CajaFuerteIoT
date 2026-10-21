@@ -1,19 +1,19 @@
-   # Android Studio / Gradle
-   *.iml
-   .gradle/
-   /local.properties
-   /.idea/
-   .DS_Store
-   /build/
-   /app/build/
-   /captures/
-   .externalNativeBuild/
-   .cxx/
-   *.apk
-   *.aab
+# Android Studio / Gradle
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/app/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
 
-   # Seguridad: archivos de configuración y firmas NO se suben al repositorio
-   # (ver SEGURIDAD.md — gestión de secretos)
-   app/google-services.json
-   *.jks
-   *.keystore
+# Seguridad: archivos de configuración y firmas NO se suben al repositorio
+# (ver SEGURIDAD.md — gestión de secretos)
+app/google-services.json
+*.jks
+*.keystore
